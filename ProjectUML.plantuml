@@ -1,0 +1,184 @@
+@startuml ClassDiagram
+skinparam linetype ortho
+set namespaceSeparator none
+skinparam dpi 300
+class test.demo.worklist.test_worklist_01.test.unit.unitTests.qunit {
+}
+class test.demo.worklist.test_worklist_01.test.unit.model.models {
+}
+class test.demo.worklist.test_worklist_01.test.unit.model.formatter {
+}
+class test.demo.worklist.test_worklist_01.test.unit.helper.FakeI18nModel <<Model>> #aliceblue ##lightsteelblue {
+	+ mTexts: map
+	+ constructor(mTexts: map): test.demo.worklist.test_worklist_01.test.unit.helper.FakeI18nModel
+	+ getResourceBundle(): map
+}
+class test.demo.worklist.test_worklist_01.test.unit.AllTests {
+}
+class test.demo.worklist.test_worklist_01.test.testsuite.qunit {
+}
+class test.demo.worklist.test_worklist_01.test.integration.WorklistJourney {
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.Worklist {
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.shareOptions {
+	+ createActions(sViewName: string): map
+	+ createAssertions(sViewName: string): map
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.Object {
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.NotFound {
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.Common {
+	+ getEntitySet(sEntitySet: string): any[]
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.Browser {
+}
+class test.demo.worklist.test_worklist_01.test.integration.pages.App {
+}
+class test.demo.worklist.test_worklist_01.test.integration.opaTests.qunit {
+}
+class test.demo.worklist.test_worklist_01.test.integration.ObjectJourney {
+}
+class test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney {
+}
+class test.demo.worklist.test_worklist_01.test.integration.NavigationJourney {
+}
+class test.demo.worklist.test_worklist_01.test.integration.FLPIntegrationJourney {
+}
+class test.demo.worklist.test_worklist_01.test.integration.arrangements.Startup {
+	+ iStartMyApp(oOptionsParameter: object): void
+	+ iRestartTheAppWithTheRememberedItem(oOptions: object): void
+	- _clearSharedData(): void
+}
+class test.demo.worklist.test_worklist_01.test.integration.arrangements.FLP {
+	+ iStartMyFLPApp(oOptionsParameter: object): void
+	+ iRestartTheAppWithTheRememberedItem(oOptions: object): void
+	+ iLeaveMyFLPApp(): sap.ui.test.Opa5.waitFor
+	- _clearSharedData(): void
+}
+class test.demo.worklist.test_worklist_01.test.integration.AllJourneys {
+}
+class test.demo.worklist.test_worklist_01.test.initFlpSandboxMockServer {
+}
+class test.demo.worklist.test_worklist_01.test.initFlpSandbox {
+}
+class test.demo.worklist.test_worklist_01.test.flpSandbox {
+	- _oBootstrapFinished: jQuery.Promise
+	+ init(): jQuery.Promise
+}
+class test.demo.worklist.test_worklist_01.model.models {
+	+ createDeviceModel(): sap.ui.model.json.JSONModel
+	+ createFLPModel(): sap.ui.model.json.JSONModel
+}
+class test.demo.worklist.test_worklist_01.model.formatter {
+	+ numberUnit(sValue: string): string
+}
+class test.demo.worklist.test_worklist_01.localService.mockserver {
+	# init(oOptionsParameter?: object): Promise
+	+ getMockServer(): sap.ui.core.util.MockServer
+}
+class test.demo.worklist.test_worklist_01.controller.Worklist <<Controller>> #honeydew ##green {
+	+ formatter: test.demo.worklist.test_worklist_01.model.formatter
+	- _aTableSearchState: any[]
+	+ onInit(): void
+	+ onUpdateFinished(oEvent: sap.ui.base.Event): void
+	+ onPress(oEvent: sap.ui.base.Event): void
+	+ onShareInJamPress(): void
+	+ onSearch(oEvent: object): void
+	+ onRefresh(): void
+	- _showObject(oItem: sap.m.ObjectListItem): void
+	- _applySearch(aTableSearchState: sap.ui.model.Filter[]): void
+}
+class test.demo.worklist.test_worklist_01.controller.Object <<Controller>> #honeydew ##green {
+	+ formatter: test.demo.worklist.test_worklist_01.model.formatter
+	+ onInit(): void
+	+ onShareInJamPress(): void
+	- _onObjectMatched(oEvent: sap.ui.base.Event): void
+	- _bindView(sObjectPath: string): void
+	- _onBindingChange(): void
+}
+class test.demo.worklist.test_worklist_01.controller.NotFound <<Controller>> #honeydew ##green {
+	+ onLinkPressed(): void
+}
+class test.demo.worklist.test_worklist_01.controller.ErrorHandler {
+	- _oResourceBundle: sap.base.i18n.ResourceBundle|Promise<sap.base.i18n.ResourceBundle>
+	- _oComponent: sap.ui.core.UIComponent
+	- _oModel: sap.ui.model.Model
+	- _bMessageOpen: boolean
+	- _sErrorText: string
+	+ constructor(oComponent: sap.ui.core.UIComponent): test.demo.worklist.test_worklist_01.controller.ErrorHandler
+	- _showServiceError(sDetails: string): void
+}
+class test.demo.worklist.test_worklist_01.controller.BaseController <<Controller>> #honeydew ##green {
+	+ getRouter(): sap.ui.core.routing.Router
+	+ getModel(sName?: string): sap.ui.model.Model
+	+ setModel(oModel: sap.ui.model.Model, sName: string): sap.ui.mvc.View
+	+ getResourceBundle(): sap.ui.model.resource.ResourceModel
+	+ onShareEmailPress(): void
+}
+class test.demo.worklist.test_worklist_01.controller.App <<Controller>> #honeydew ##green {
+	+ onInit(): void
+}
+class test.demo.worklist.test_worklist_01.Component {
+	+ metadata: map
+	- _oErrorHandler: test.demo.worklist.test_worklist_01.controller.ErrorHandler
+	- _sContentDensityClass: string
+	+ init(): void
+	+ destroy(): void
+	+ getContentDensityClass(): string
+}
+class test.demo.worklist.test_worklist_01.view.AppView << (V,orchid) >> #gainsboro ##grey {}
+class test.demo.worklist.test_worklist_01.view.NotFoundView << (V,orchid) >> #gainsboro ##grey {}
+class test.demo.worklist.test_worklist_01.view.ObjectView << (V,orchid) >> #gainsboro ##grey {}
+class test.demo.worklist.test_worklist_01.view.ObjectNotFoundView << (V,orchid) >> #gainsboro ##grey {}
+class test.demo.worklist.test_worklist_01.view.WorklistView << (V,orchid) >> #gainsboro ##grey {}
+test.demo.worklist.test_worklist_01.Component ..> test.demo.worklist.test_worklist_01.model.models
+test.demo.worklist.test_worklist_01.Component ..> test.demo.worklist.test_worklist_01.controller.ErrorHandler
+test.demo.worklist.test_worklist_01.controller.BaseController <|-- test.demo.worklist.test_worklist_01.controller.App
+test.demo.worklist.test_worklist_01.controller.App ..> test.demo.worklist.test_worklist_01.Component
+test.demo.worklist.test_worklist_01.controller.BaseController ..> test.demo.worklist.test_worklist_01.Component
+test.demo.worklist.test_worklist_01.controller.BaseController <|-- test.demo.worklist.test_worklist_01.controller.NotFound
+test.demo.worklist.test_worklist_01.controller.BaseController <|-- test.demo.worklist.test_worklist_01.controller.Object
+test.demo.worklist.test_worklist_01.controller.Object ..> test.demo.worklist.test_worklist_01.model.formatter
+test.demo.worklist.test_worklist_01.controller.Object ..> test.demo.worklist.test_worklist_01.Component
+test.demo.worklist.test_worklist_01.controller.BaseController <|-- test.demo.worklist.test_worklist_01.controller.Worklist
+test.demo.worklist.test_worklist_01.controller.Worklist ..> test.demo.worklist.test_worklist_01.model.formatter
+test.demo.worklist.test_worklist_01.test.initFlpSandbox ..> test.demo.worklist.test_worklist_01.test.flpSandbox
+test.demo.worklist.test_worklist_01.test.initFlpSandboxMockServer ..> test.demo.worklist.test_worklist_01.localService.mockserver
+test.demo.worklist.test_worklist_01.test.initFlpSandboxMockServer ..> test.demo.worklist.test_worklist_01.test.flpSandbox
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.arrangements.FLP
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.WorklistJourney
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.NavigationJourney
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.ObjectJourney
+test.demo.worklist.test_worklist_01.test.integration.AllJourneys ..> test.demo.worklist.test_worklist_01.test.integration.FLPIntegrationJourney
+test.demo.worklist.test_worklist_01.test.integration.arrangements.FLP ..> test.demo.worklist.test_worklist_01.localService.mockserver
+test.demo.worklist.test_worklist_01.test.integration.FLPIntegrationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Object
+test.demo.worklist.test_worklist_01.test.integration.FLPIntegrationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Worklist
+test.demo.worklist.test_worklist_01.test.integration.NavigationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Worklist
+test.demo.worklist.test_worklist_01.test.integration.NavigationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Browser
+test.demo.worklist.test_worklist_01.test.integration.NavigationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Object
+test.demo.worklist.test_worklist_01.test.integration.NavigationJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.App
+test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Worklist
+test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Browser
+test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.NotFound
+test.demo.worklist.test_worklist_01.test.integration.NotFoundJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.App
+test.demo.worklist.test_worklist_01.test.integration.ObjectJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Worklist
+test.demo.worklist.test_worklist_01.test.integration.ObjectJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Browser
+test.demo.worklist.test_worklist_01.test.integration.ObjectJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Object
+test.demo.worklist.test_worklist_01.test.integration.ObjectJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.App
+test.demo.worklist.test_worklist_01.test.integration.pages.App ..> test.demo.worklist.test_worklist_01.test.integration.pages.Common
+test.demo.worklist.test_worklist_01.test.integration.pages.Browser ..> test.demo.worklist.test_worklist_01.test.integration.pages.Common
+test.demo.worklist.test_worklist_01.test.integration.pages.Common ..> test.demo.worklist.test_worklist_01.localService.mockserver
+test.demo.worklist.test_worklist_01.test.integration.pages.NotFound ..> test.demo.worklist.test_worklist_01.test.integration.pages.Common
+test.demo.worklist.test_worklist_01.test.integration.pages.Object ..> test.demo.worklist.test_worklist_01.test.integration.pages.Common
+test.demo.worklist.test_worklist_01.test.integration.pages.Object ..> test.demo.worklist.test_worklist_01.test.integration.pages.shareOptions
+test.demo.worklist.test_worklist_01.test.integration.pages.Worklist ..> test.demo.worklist.test_worklist_01.test.integration.pages.Common
+test.demo.worklist.test_worklist_01.test.integration.pages.Worklist ..> test.demo.worklist.test_worklist_01.test.integration.pages.shareOptions
+test.demo.worklist.test_worklist_01.test.integration.WorklistJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.Worklist
+test.demo.worklist.test_worklist_01.test.integration.WorklistJourney ..> test.demo.worklist.test_worklist_01.test.integration.pages.App
+test.demo.worklist.test_worklist_01.test.unit.AllTests ..> test.demo.worklist.test_worklist_01.test.unit.model.formatter
+test.demo.worklist.test_worklist_01.test.unit.AllTests ..> test.demo.worklist.test_worklist_01.test.unit.model.models
+
+@enduml
